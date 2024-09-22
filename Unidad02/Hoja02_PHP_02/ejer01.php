@@ -9,7 +9,7 @@
 
         <?php
         
-        print ""
+        print "Este es el resultado correcto del primer ejercicio";
         ?>
     </body>
 </html>
