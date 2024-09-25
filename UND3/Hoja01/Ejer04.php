@@ -14,13 +14,20 @@
             $capicuas = [];
 
             for($i=100;$i<=999;$i++){
-                // Convertimos el número a cadena
-                $strNumero = (string)$i;
 
-                 // Comparamos el primer carácter con el último
-                 if ($strNumero[0] == $strNumero[2]) {
-                $capicuas[] = $i;
-                }
+                    //Capicua generico de forma matematica
+                $numero=4774;
+                $inverso=0;
+                $aux=$numero;
+            while($aux!=0){
+            $resto=$aux%10;
+            $inverso=$inverso*10+$resto;
+            $aux=(int)($aux/10);
+    }
+        if($numero==$inverso)
+           echo "El numero $numero es capicúa<br />";
+        else
+            echo "El numero $numero NO es capicúa<br />";
             }
             return $capicuas;
         }
