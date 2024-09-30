@@ -6,54 +6,47 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <?php
-
-        
-
-        function comprobarCapicua($numero){
-                //Capicua generico de forma matematica
-                $numero=4774;
-                $inverso=0;
-                $aux=$numero;
-
+        function capicua($num): void {
+            $numero=$num;
+            $inverso=0;
+            $aux=$numero;
             while($aux!=0){
                 $resto=$aux%10;
                 $inverso=$inverso*10+$resto;
                 $aux=(int)($aux/10);
-                }
-        if($numero==$inverso)
+            }
+            if($numero==$inverso)
             echo "El numero $numero es capicúa<br />";
             else
             echo "El numero $numero NO es capicúa<br />";
         }
 
-        function redondeable($numero){
-            //redondear hacia arriba 
-
-            round($numero,PHP_ROUND_HALF_UP);
-            //redondear hacia abajo 
-            round ($numero,PHP_ROUND_HALF_DOWN);
+        function redondear($num): int {
+            /* if(($num - (int)$num) > 0.50) {
+                return ceil($num); 
+            } else {
+                return floor($num);
+            }
+                */
+            return round($num);
         }
-        function numDigitos($numero){
-            $suma=0;
-            while($numero!=0){
-                $resto=(int)$numero%10;
-                $resto=1;
-                $suma=$suma+$resto;
-                $numero=(int)($numero/10);
-                }
-        } 
 
-        $numero=300; 
+        function numDigitos($num) {
+            $numStr = strval($num);
+            $digitos = 0;
 
-        print "Numero dado " .$numero. "<br>"
-        . comprobarCapicua($numero) . "<br>".
-        redondeable ($numero). "<br>". 
-        numDigitos($numero);
-    
+            for($i=0; $i <= mb_strlen($numStr);$i++) {
+                $digitos++;
+            }
+            return digitos;
+        }
+
+        $numero = 212.50;
+        echo 'Numero redondeado: ' . redondear($numero) . "<br/>";
+        echo 'Numero de digitos: ' . numDigitos($numero);
     ?>
-    
 
 </body>
 </html>
