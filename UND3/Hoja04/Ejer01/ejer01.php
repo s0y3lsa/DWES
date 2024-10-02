@@ -26,16 +26,18 @@
                 */
                  // Método mágico __set para asignar valor al atributo privado radio
                 public function __set($nombre, $valor) {
-                if ($nombre == 'radio') {
-                $this->radio = $valor;
-                }
+              
+                $this->$nombre = $valor;
+                
                 }
                 // Método mágico __get para obtener el valor del atributo privado radio
                 public function __get($nombre) {
-                if ($nombre == 'radio') {
-                    return $this->radio;
-                    }
+                
+                    return $this->$nombre;
+                    
                 }
+
+                
             }
         ?>  
 
