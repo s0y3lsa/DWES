@@ -23,6 +23,10 @@
             // Mostrar el nuevo valor del radio
             echo "El nuevo radio es: " . $miCirculo->radio . "<br>";
 
+            //usar metodos magicos set y get
+            $miCirculo->__set('radio',15);
+            echo "Nuevo radio usando  __set:". $miCirculo->__get('radio')."<br>";
+
         ?>
 </body>
 </html>
