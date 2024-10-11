@@ -1,0 +1,13 @@
+{
+    "name": "elsa/ejercicio01",
+    "type": "project",
+    "authors": [
+        {
+            "name": "elsa"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "brick/math": "^0.12.1"
+    }
+}
