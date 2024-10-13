@@ -7,6 +7,9 @@
 </head>
 <body>
 
+
+    
+    <!-- Formulario con método POST -->
     <h1>Formulario con metodo POST</h1>
     <form name="input" action="procesa.php" metho="post">
 
@@ -18,8 +21,23 @@
             <option value="DesarrolloWebenEntornoServidor">Desarrollo Web en Entorno Servidor</option>
             <option value="DesarrolloWebenEntornoCliente">Desarrollo Web en Entorno Cliente</option>
         </select>
-        <button type="submit">Enviar (POST)</button>
+        <input type="submit" value="Enviar con POST">
     </form>
     
+
+    <!-- Formulario con método GET -->
+    <form action="procesa.php" method="GET">
+        <label for="nombre2">Nombre del Alumno:</label>
+        <input type="text" id="nombre2" name="nombre" required><br><br>
+
+        <label for="modulo2">Seleccione un módulo:</label>
+        <select id="modulo2" name="modulo" required>
+            <option value="DesarrolloWebenEntornoServidor">Desarrollo Web en Entorno Servidor</option>
+            <option value="DesarrolloWebenEntornoCliente">Desarrollo Web en Entorno Cliente</option>
+        </select><br><br>
+
+        <input type="submit" value="Enviar con GET">
+    </form>
+
 </body>
 </html>
