@@ -1,0 +1,13 @@
+{
+    "name": "elsa/hoja03",
+    "type": "project",
+    "authors": [
+        {
+            "name": "elsa"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hackzilla/password-generator": "^1.7"
+    }
+}
