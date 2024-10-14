@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h1>Conversor de monedas</h1>
+
+    <h1> Conversor de monedas </h1>
+    <form action="procesa.php" method="post">
+        <label for="cantidad">Cantidad: * </label>
+        <input type="number" name="cantidad" id="cantidad" required>
+        <br>
+        <br>
+
+        <label for="origen">Origen: *</label>
+        <select name="origen" id="origen">
+            <option value="euros">euros</option>
+            <option value="dolares">dolares</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="destino">Destino: *</label>
+        <select name="destino" id="destino">
+            <option value="euros">euros</option>
+            <option value="dolares">dolares</option>
+        </select>
+        <br>
+        <br>
+        
+        <input type="submit" value="Enviar datos">
+    </form>
+
+
+
+</body>
+</html>
