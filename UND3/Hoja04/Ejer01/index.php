@@ -6,7 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+
         <?php
+
 
             // Incluimos la clase Circulo 
             require_once 'Circulo.php';
@@ -18,15 +20,16 @@
             print "El radio inicial es: ". $miCirculo->radio ."<br>;" 
 
             // cambiar el valor del radio metodo magico __set
-            $miCirculo->radio=20;
+            // $miCirculo->radio=20;
 
             // Mostrar el nuevo valor del radio
-            echo "El nuevo radio es: " . $miCirculo->radio . "<br>";
+           // echo "El nuevo radio es: " . $miCirculo->radio . "<br>";
 
             //usar metodos magicos set y get
-            $miCirculo->__set('radio',15);
-            echo "Nuevo radio usando  __set:". $miCirculo->__get('radio')."<br>";
+          //  $miCirculo->__set('radio',15);
+           //  echo "Nuevo radio usando  __set:". $miCirculo->__get('radio')."<br>";
 
         ?>
+        
 </body>
 </html>

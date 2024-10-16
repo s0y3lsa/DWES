@@ -58,7 +58,7 @@
         if ($medico instanceof Familia && $medico->getNumPacientes() >= 40) {
             echo "<p>" . $medico->mostrarDatos() . "</p>";
     }
-
+    }
     ?>
 </body>
 </html>

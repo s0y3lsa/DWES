@@ -10,7 +10,7 @@
     //añadir la clase 
    
     include("clases.php");
-    $aeropuerto = new A
+    $aeropuerto = new avion1();
 
       // 2.Crear tres aviones
       $avion1 = new Avion("Boeing 747", 2, 4, 0, "Iberia", 300, new DateTime("2020-05-20"), 13000);
