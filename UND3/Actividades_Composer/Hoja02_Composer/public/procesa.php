@@ -1,6 +1,5 @@
 <?php
 
-namespace App\public;
 
 require_once '../vendor/autoload.php';
 
@@ -8,23 +7,26 @@ use app\Clases\ServicioCorreo;
 use app\Clases\ProveedorMailtrap;
 
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $mensaje = $_POST['mensaje'];
-
-    // Utilizando el autoload de composer en PSR4 ServicioCorreo.php y ProveedorMailtrap.php
-    $proveedor = new ProveedorMailtrap();
-    $servicioCorreo = new ServicioCorreo($proveedor);
-
-    if($servicioCorreo->enviarCorreo($email,$asunto,$mensaje)){
-        echo 'Correo enviado existosamente. ';
-    }else{
-        echo 'Error al enviar el correo.';
-    }
-
+// Validar los campos
+if (empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['mensaje'])) {
+    header('Location: formulario.php?error=1');
+    exit;
 }
+// Crear la instancia del servicio de correo
+$proveedorMailtrap = new ProveedorMailtrap();
+$servicioCorreo = new ServicioCorreo($proveedorMailtrap);
 
+$nombre = $_POST['nombre'];
+$email = $_POST['email'];
+$mensaje = $_POST['mensaje'];
+
+// Enviar el correo
+$asunto='nuevo mensaje de '.$nombre;
+if ($servicioCorreo->enviarCorreo($email, $asunto, $mensaje)) {
+    header('Location:formulario.php?success=1');
+    exit;
+} else {
+    header('Location: formulario.php?error=3');
+    exit;
+}
 ?>
