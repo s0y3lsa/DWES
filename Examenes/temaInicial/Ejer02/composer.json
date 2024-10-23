@@ -1,0 +1,21 @@
+{
+    "name": "elsa/ejer02",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Elsa"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    },
+    "autoload":{
+        "psr4:"{
+            "App\\": "src/"
+    },
+    "scripts":{
+        "start":"php -s localhost:8000 -t public"
+    }
+}
+}
