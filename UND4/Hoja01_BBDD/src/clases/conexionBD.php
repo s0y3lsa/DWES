@@ -6,12 +6,11 @@ use PDOException;
 $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__,2));
 $dotenv->load();
 
+
 final class conexionBD
 {
     private static ?PDO $connection = null;
-
     final private function __construct() {}
-
     final public static function getConnection(): ?PDO
     {
         try {

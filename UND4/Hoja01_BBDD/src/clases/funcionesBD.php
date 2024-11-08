@@ -1,8 +1,7 @@
 <?php
 namespace App\clases;
-
 use PDO;
-use PDOExceptionm;
+use PDOException;
 final class funcionesBD
 {
     public static function getEquipos(): array
@@ -16,10 +15,21 @@ final class funcionesBD
         //array asociativo
         while ($registro = $consulta->fetch(PDO::FETCH_ASSOC)) {
             $resultado[] = $registro['nombre'];
-           
         }
-        
         return $resultado;
     }
+
+    public static function getJugadoresEquipo($equipo){
+        try {
+            $dwes = ConexionBD::getConnection();
+            $resultado = $dwes->query('SELECT nombre,peso FROM jugadores where nombre_equipo='.'"'.$equipo.'"');
+            // fetch_ASSOC devuelve un array 
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error al obtener a todos los jugadores: " . $e->getMessage();
+            return [];
+        }
+    }
+
 }
 ?>
