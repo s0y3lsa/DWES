@@ -13,9 +13,8 @@
     use App\Clases\funcionesBD;
     $connection = ConexionBD::getConnection();
 
-    $funciones = new funcionesBD();
 
-    $libros = $funciones->getLibros();
+    $libros = $funcionesBD::getLibros();
     echo ('<table>');
     echo('<tr><th>NUMERO DE EJEMPLAR</th><th>TITULO</th><th>AÑO DE EDICION</th><th>PRECIO</th><th>FECHA DE ADQUISICION</th></tr>');
     foreach ($libros as $libro) {

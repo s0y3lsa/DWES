@@ -17,14 +17,14 @@
     use App\Clases\funcionesBD;
 
     $connection = ConexionBD::getConnection();
-    $funciones = new funcionesBD();
+    
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $titulo = $_POST['titulo'];
         $edicion = $_POST['edicion'];
         $precio = $_POST['precio'];
         $adquisicion = $_POST['adquisicion'];
-        $funciones->agregarLibro($titulo, $edicion, $precio, $adquisicion);
+        $funcionesBD::agregarLibro($titulo, $edicion, $precio, $adquisicion);
     }
 
     ?>

@@ -58,7 +58,7 @@ if ($connection instanceof PDO) {
     <h1>Baja y alta de jugadores</h1>
     <form method="post">
         <p>Baja del jugador:
-            <select id="nombre" name="nombre">
+            <select id="jugador" name="jugadorñ">
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'])) {
                 //mostrar nombres de los jugadores de los equipo
@@ -74,29 +74,43 @@ if ($connection instanceof PDO) {
 
         <h4>Datos del nuevo jugador</h4>
 
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" id="nombre">
+        <label for="nombreRemplazo">Nombre: </label>
+        <input type="text" name="nombreRemplazo" id="nombreRemplazo">
         <br>
-        <label for="procedencia">Procedencia: </label>
-        <input type="text" name="procedencia" id="procedencia">
+        <label for="procedenciaRemplazo">Procedencia: </label>
+        <input type="text" name="procedenciaRemplazo" id="procedenciaRemplazo">
         <br>
-        <label for="altura">Altura: </label>
-        <input type="number" name="altura" id="altura">
+        <label for="alturaRemplazo">Altura: </label>
+        <input type="number" name="alturaRemplazo" id="alturaRemplazo" step="0.01">
         <br>
-        <label for="peso">Peso: </label>
-        <input type="number" name="peso" id="peso">
+        <label for="pesoRemplazo">Peso: </label>
+        <input type="number" name="pesoRemplazo" id="pesoRemplazo">
         <br>    
-        <label for="posicion">Posicion: </label>
-        <select id="posicion" required>
+        <label for="posicionRemplazo">Posicion: </label>
+        <select name="posicionRemplazo" id="posicionRemplazo" required>
                 <option>G</option>
                 <option>F</option>
                 <option>F-G</option>
                 
         </select>
         <br>
-        <input type="submit" value="Realizar transpaso" name="transpaso">
-
+        <input type="submit" value="Realizar transpaso" name="transpaso" id="transpaso">
     </form>
+
+    <?php 
+          if (isset($_POST['traspaso'])) {
+            // Capturamos los datos del formulario
+            $nombreViejo=$_POST['jugador'];
+            $nombre = $_POST['nombreRemplazo'];
+            $procedencia = $_POST['procedenciaRemplazo'];
+            $altura = $_POST['alturaRemplazo'];
+            $peso = $_POST['pesoRemplazo'];
+            $posicion = $_POST['posicionRemplazo'];
+            // Llamamos a la función para modificar el jugador
+            $funciones->darBajaJugador($nombreViejo,$nombre, $procedencia, $altura, $peso, $posicion);     
+        }
+        ?>
+
 
 </body>
 

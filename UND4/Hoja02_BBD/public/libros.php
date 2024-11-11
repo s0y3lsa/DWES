@@ -28,13 +28,13 @@ if ($connection instanceof PDO) {
             <input type="text" name="titulo" id="titulo">
             <br>
             <label for="anio">Año de edicion:*</label>
-            <input type="number" name="anio" id="anio">
+            <input type="number" name="edicion" id="edicion">
             <br>
             <label for="precio">Precio:*</label>
-            <input type="number" name="" id="">
+            <input type="number" name="precio" id="precio">
             <br>
             <label for="fecha">Fecha de adquisicón:*</label>
-            <input type="date" name="fecha" id="fecha">
+            <input type="date" name="adquisicion" id="adquisicon">
             <br>
             <input type="submit" value="Guardar datos del libro">
 

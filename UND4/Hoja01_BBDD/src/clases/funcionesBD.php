@@ -52,40 +52,31 @@ final class funcionesBD
     }
 
     //metodo de baja
-    public static function darBajaJugador(){
-        
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['realizar_traspaso'])) {
-            $equipo_id = intval($_POST['equipo']);
-            $jugador_baja_id = intval($_POST['jugador_baja']);
-            $nombre_nuevo = $_POST['nombre'];
-            $procedencia_nuevo = $_POST['procedencia'];
-            $altura_nuevo = floatval($_POST['altura']);
-            $peso_nuevo = floatval($_POST['peso']);
-            $posicion_nuevo = $_POST['posicion'];
-        
-            try {
-                // Iniciar transacción
-                $dwes = ConexionBD::getConnection();
-                $dwes->beginTransaction();
-        
-                // Eliminar estadísticas del jugador que será dado de baja
-                $stmt = $dwes->prepare("DELETE FROM estadisticas WHERE jugador= :jugador_id");
-                $stmt->execute(['jugador_id' => $jugador_baja_id]);
-        
-                // Dar de baja al jugador
-                $stmt = $dwes->prepare("DELETE FROM jugadores WHERE codigo = :jugador_id");
-                $stmt->execute(['jugador_id' => $jugador_baja_id]);
-        
-                // Añadir el nuevo jugador
-                $stmt = $dwes->prepare("INSERT INTO jugadores (nombre, procedencia, altura, peso, posicion, nombre_equipo) VALUES (:nombre, :procedencia, :altura, :peso, :posicion, :nombre_equipo)");
-                $stmt->execute([
-                    'nombre' => $nombre_nuevo,
-                    'procedencia' => $procedencia_nuevo,
-                    'altura' => $altura_nuevo,
-                    'peso' => $peso_nuevo,
-                    'posicion' => $posicion_nuevo,
-                    'nombre_equipo' => $equipo_id
-                ]);
+    public static function darBajaJugador($nombreViejo,$nombre, $procedencia, $altura, $peso, $posicion){
+       
+        try{
+
+         //hacemos la conexion
+         $dwes = ConexionBD::getConnection();
+         //iniciamos la transaccion(se me olvido)
+         $dwes->beginTransaction();
+         
+          //preparamos la consulta
+          $consulta = $dwes->prepare('update jugadores set nombre=:nombre, procedencia=:procedencia, altura=:altura, peso=:peso, posicion=:posicion where nombre=:nombreViejo');
+
+             //asignamos los campos
+             $consulta->bindParam(':nombre', $nombre);
+             $consulta->bindParam(':procedencia', $procedencia);
+             $consulta->bindParam(':altura', $altura);
+             $consulta->bindParam(':peso', $peso);
+             $consulta->bindParam(':posicion', $posicion);
+             $consulta->bindParam(':nombreViejo',$nombreViejo);
+             //ejercutamos la consulta
+             $consulta->execute();
+             //si funciona que haga un commit sino un rollback
+             $dwes->commit();
+             echo("Se cambio el jugador");
+
     }    
     catch(PDOException $e) {
         // Revertir la transacción en caso de error
@@ -93,5 +84,5 @@ final class funcionesBD
         echo "Error en el traspaso: " . $e->getMessage();
     }
     }
-    }
+    
 }

@@ -56,7 +56,7 @@ class funcionesBD
             $consulta->execute();
             //si funciona que haga un commit sino un rollback
             $dwes->commit();
-            echo("Se agrego el libro");
+            echo "Se agrego el libro";
         } catch (PDOException $e) {
             //el rollback
             $dwes->rollBack();
