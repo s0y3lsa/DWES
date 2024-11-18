@@ -7,6 +7,8 @@ use DateTime;
 
 class funcionesBD
 {
+
+    // obtener libros
     public static function getLibros(): array
     {
         try {
@@ -20,6 +22,7 @@ class funcionesBD
         }
     }
     
+    //agregar libros mediante transacciones
     public static function agregarLibro($titulo,$edicion,$precio,$adquisicion)
     {
         function esFechaValida($fechaAdquisicion) {

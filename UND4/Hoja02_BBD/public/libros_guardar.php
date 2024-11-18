@@ -10,11 +10,9 @@
 <body>
 
     <?php
-
     require_once '../vendor/autoload.php';
-
-    use App\Clases\ConexionBD;
-    use App\Clases\funcionesBD;
+    use App\clases\ConexionBD;
+    use App\clases\funcionesBD;
 
     $connection = ConexionBD::getConnection();
     
@@ -24,7 +22,8 @@
         $edicion = $_POST['edicion'];
         $precio = $_POST['precio'];
         $adquisicion = $_POST['adquisicion'];
-        $funcionesBD::agregarLibro($titulo, $edicion, $precio, $adquisicion);
+        
+        funcionesBD::agregarLibro($titulo, $edicion, $precio, $adquisicion);
     }
 
     ?>

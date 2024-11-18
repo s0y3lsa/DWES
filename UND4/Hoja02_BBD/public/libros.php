@@ -39,6 +39,6 @@ if ($connection instanceof PDO) {
             <input type="submit" value="Guardar datos del libro">
 
     </form>
-    <a href="libros.php">Mostrar los libros guardados</a>
+    <a href="libros_datos.php">Mostrar los libros guardados</a>
 </body>
 </html>
