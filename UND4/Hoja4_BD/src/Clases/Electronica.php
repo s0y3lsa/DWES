@@ -4,8 +4,6 @@ class Electronica extends Producto
 {
     private $plazoGarantia;
    
-
-
     public function __construct($plazoGarantia,$codigo,$precio,$nombre,$categoria)
     {
         parent::__construct($codigo,$precio,$nombre,$categoria);

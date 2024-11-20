@@ -51,7 +51,13 @@ class FuncionBD
                 $stmt->bindParam(':asiento', $asiento, PDO::PARAM_INT);
                 $stmt->execute();
 
+                // $salida2=$stmt->rowCount();
                 // Confirmar la transacción
+                /*
+                if($salida1===1 && $salida2===1){
+
+                }
+                */
                 $dwes->commit();
                 echo "La plaza ha sido reservada con éxito.";
             }
@@ -61,8 +67,6 @@ class FuncionBD
         }
     }
 
-
-
     public static function Llegada(): void
     {
         try {
@@ -70,6 +74,7 @@ class FuncionBD
             $dwes->beginTransaction();
             $consulta = $dwes->prepare('update plazas set reservada=0');
             $consulta->execute();
+
             $consulta = $dwes->prepare("delete from pasajeros");
             $consulta->execute();
             echo "Se han podido realizar los cambios";
@@ -88,7 +93,7 @@ class FuncionBD
             $resultado = $dwes->query('SELECT numero,precio FROM plazas ');
             return $resultado->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "No se han podido conseguir las plazas libres: " . $e->getMessage();
+            echo "No se han podido conseguir: " . $e->getMessage();
             return [];
         }
     }

@@ -10,6 +10,7 @@ use App\ClasesBD\FuncionBD;
     <title>Pagina principal</title>
 </head>
 <body>
+    
    <?php
    $productos=FuncionBD::getProductos(null);
    foreach($productos as $producto){

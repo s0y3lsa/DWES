@@ -8,14 +8,10 @@ use App\Clases\Alimentacion;
 use App\Clases\Electronica;
 class FuncionBD
 {
-
-
-
     public static function getProductos($tipo): array
     {
         try {
             $productos = [];  // Array para almacenar los objetos de productos
-
             $dwes = ConexionBD::getConnection();
 
             if ($tipo === "alimentacion") {
@@ -33,23 +29,24 @@ class FuncionBD
                     }
 
                 }
-
             } else if ($tipo === "electronica") {
-                $resultado = $dwes->query('SELECT DISTINCT productos.id, productos.nombre, productos.precio, productos.categoria_id, electronica.plazo_garantia, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre
+            
+
+            $resultado = $dwes->query('SELECT DISTINCT productos.id, productos.nombre, productos.precio, productos.categoria_id, electronica.plazo_garantia, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre
                     FROM productos
                     INNER JOIN electronica ON productos.id = electronica.id
                     INNER JOIN categorias ON productos.categoria_id = categorias.id');
 
                 while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            
                     $categoria = new Categoria($row['categoria_id'], $row['categoria_nombre']);
                     $producto = new Electronica($row['plazo_garantia'], $row['id'], $row['precio'], $row['nombre'], $categoria);
+            
                     // Al agregar productos, asegúrate de que no se repitan
                     if (!in_array($producto, $productos)) {
                         $productos[] = $producto;
                     }
-
                 }
-
             } else {
                 $resultado = $dwes->query('SELECT DISTINCT productos.id, productos.nombre, productos.precio, productos.categoria_id,
                     COALESCE(alimentacion.mes_caducidad, NULL) AS mes_caducidad,

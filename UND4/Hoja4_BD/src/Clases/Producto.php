@@ -3,6 +3,7 @@ namespace App\Clases;
 class Producto
 {
     protected $codigo;
+
     protected $precio;
     protected $nombre;
     protected $categoria;

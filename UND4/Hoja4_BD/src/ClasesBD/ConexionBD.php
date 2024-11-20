@@ -11,7 +11,6 @@ final class ConexionBD
     final private function __construct(){}
     final public static function getConnection(): ?PDO
     {
-       
         try {
             if (!self::$connection) {
                 self::$connection = new PDO(
