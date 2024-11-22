@@ -1,0 +1,11 @@
+{
+    "name": "elsa/hoja06",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Elsa"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
