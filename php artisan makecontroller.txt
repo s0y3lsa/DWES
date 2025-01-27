@@ -1,0 +1,13 @@
+php artisan make:controller  
+
+Hacer un controlador: php artisan -i make:controller InicioController
+
+
+----------------
+ejecutar: php artisan serve
+
+crear larabel: 
+laravel new lpruebas
+
+crear vista: 
+php artisan make:view inicio
